@@ -3,10 +3,14 @@ const braintree = require('braintree')
 const orderSchema = require('../models/order')
 const sampleProduct =require('../sample/Product')
 
+
 const ProductSend = async (req, res) => {
+    let product=sampleProduct.filter((ele,index)=>{
+        return index<20;
+    })
     try {
-        let prod =sampleProduct.find()
-        return res.status(200).json(prod)
+        console.log(product);
+        return res.status(200).json(product)
     } catch (error) {
         console.log(`ProductController__ProductSend -->  ${error}`)
         return res.status(500).json({ 'message': error })
